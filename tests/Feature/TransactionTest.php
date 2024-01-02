@@ -150,7 +150,7 @@ class TransactionTest extends TestCase
         $response->assertSee($exception->getMessage());
     }
 
-    public function testWithoutExistentUser(): void
+    public function testInexistentUser(): void
     {
         $this->actingAs($this->user);
 
@@ -164,7 +164,7 @@ class TransactionTest extends TestCase
         $response->assertSee($exception->getMessage());
     }
 
-    public function testWithoutExistentWallet(): void
+    public function testInexistentWallet(): void
     {
         $this->actingAs($this->user);
 

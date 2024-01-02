@@ -23,7 +23,7 @@ class TransactionApplicationControllerTest extends TestCase
     private User $user;
     private User $userWithoutBalance;
     private TransactionServiceFactory $transactionServiceFactory;
-    private ToUserTransactionService $toNaturalPersonTransactionService;
+    private ToUserTransactionService $ToUserTransactionService;
     private UserService $userService;
     private TransactionDTO $transactionDTO;
     private TransactionEntity $transactionEntity;
@@ -37,7 +37,7 @@ class TransactionApplicationControllerTest extends TestCase
             ->create();
 
         $this->transactionServiceFactory = Mockery::mock(TransactionServiceFactory::class);
-        $this->toNaturalPersonTransactionService = Mockery::mock(ToUserTransactionService::class);
+        $this->ToUserTransactionService = Mockery::mock(ToUserTransactionService::class);
         $this->userService = Mockery::mock(UserService::class);
 
         $this->transactionEntity = $this->validTransactionEntity();
@@ -61,9 +61,9 @@ class TransactionApplicationControllerTest extends TestCase
             ->shouldReceive('createTransactionObject')
             ->with($this->userWithoutBalance->document_type)
             ->once()
-            ->andReturn($this->toNaturalPersonTransactionService);
+            ->andReturn($this->ToUserTransactionService);
 
-        $this->toNaturalPersonTransactionService
+        $this->ToUserTransactionService
             ->shouldReceive('createTransaction')
             ->with($this->transactionDTO)
             ->once()

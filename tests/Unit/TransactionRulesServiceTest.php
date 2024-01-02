@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use Mockery;
 use Src\Domain\Enum\DocumentTypeEnum;
 use Src\Domain\Exception\TransactionException;
 use Src\Domain\Service\TransactionRulesService;
@@ -18,12 +17,6 @@ class TransactionRulesServiceTest extends TestCase
     {
         parent::setUp();
         $this->user = User::factory()->has(Wallet::factory()->state(['balance' => 500]))->create();
-    }
-
-    public function tearDown(): void
-    {
-        parent::tearDown();
-        Mockery::close();
     }
 
     public function testTransactionRulesServiceCaseCheckPayerIsNotMerchantException(): void
